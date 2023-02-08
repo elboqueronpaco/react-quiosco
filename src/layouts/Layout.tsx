@@ -5,6 +5,8 @@ import { Resumen } from '../components/Resumen'
 import { Sidebar } from '../components/Sidebar'
 import useQuisco from '../hooks/useQuiosco'
 import ModalProduct from '../components/modals/ModalProduct'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 const customStyles = {
   content: {
     top: "50%",
@@ -17,8 +19,7 @@ const customStyles = {
 }
 Modal.setAppElement('#root')
 export const Layout = () => {
-  const { modal, handleClickModal } = useQuisco()
-  console.log(modal)
+  const { modal } = useQuisco()
   return (
     <>
       <div className='md:flex'>
@@ -31,6 +32,7 @@ export const Layout = () => {
         <Modal isOpen={modal} style={customStyles}>
           <ModalProduct />
         </Modal>
+        <ToastContainer />
     </>
   )
 }

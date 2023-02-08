@@ -17,7 +17,7 @@ export const Resumen = () => {
           </p>
         ):(
           pedido.map( producto => (
-            <ResumenProducto producto={producto} key={producto.id}/>
+            <ResumenProducto producto={producto}  key={producto.id}/>
           ))
         )}
       </div>

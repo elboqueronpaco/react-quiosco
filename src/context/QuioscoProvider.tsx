@@ -3,6 +3,7 @@ import { CategoriesInterface } from "../interfaces/CategoriesInterface";
 import { categorias as categoriasDB } from "../data/categorias";
 import { ProductsInterface } from "../interfaces/ProductsInterface";
 import { productos as productosDB } from "../data/productos";
+import { toast } from "react-toastify";
 interface defaultQuiosco  { 
   categorias: CategoriesInterface[]
   categoriaActual: CategoriesInterface
@@ -37,8 +38,16 @@ const QuioscoProvider:FC<QuioscoProviderProp> = ({children}) =>{
     setProducto(producto)
   }
   const handleAgregarPedido = ({categoria_id , imagen, ...producto}:ProductsInterface) => {
-    setPedido([...pedido,producto])
-    setModal(false)
+    if(pedido.some(pedidoState => pedidoState.id === producto.id)){
+      const pedidoActualizado = pedido.map(pedidoState => pedidoState.id === producto.id ? producto : pedidoState)
+      setPedido(pedidoActualizado)
+      toast.success('actualizado correctamente el pedido')
+      setModal(false)
+    } else{
+      setPedido([...pedido,producto])
+      toast.success('agregado al pedido')
+      setModal(false)
+    }
   }
   return(
     <QuioscoContext.Provider

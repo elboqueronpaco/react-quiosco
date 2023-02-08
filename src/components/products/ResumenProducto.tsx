@@ -1,14 +1,14 @@
 import React from 'react';
 import { formatearEuro } from '../../helpers';
-import { ProductsInterface } from '../../interfaces/ProductsInterface';
+import { PedidoInterface, ProductsInterface } from '../../interfaces/ProductsInterface';
 
 interface Props {
-  producto: ProductsInterface
-  cantidad : number
+  producto: PedidoInterface
+
 }
 
-const ResumenProducto: React.FC<Props> = ({producto, cantidad}) => {
-  const { id, nombre, precio } = producto
+const ResumenProducto: React.FC<Props> = ({producto}) => {
+  const { id, nombre, precio, cantidad } = producto
   return (
     <div className="shadow space-y-1 p-4 bg-white">
       <div className="space-y-2">
