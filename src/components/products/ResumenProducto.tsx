@@ -4,10 +4,11 @@ import { ProductsInterface } from '../../interfaces/ProductsInterface';
 
 interface Props {
   producto: ProductsInterface
+  cantidad : number
 }
 
-const ResumenProducto: React.FC<Props> = ({producto}) => {
-  const { id, nombre, precio, cantidad } = producto
+const ResumenProducto: React.FC<Props> = ({producto, cantidad}) => {
+  const { id, nombre, precio } = producto
   return (
     <div className="shadow space-y-1 p-4 bg-white">
       <div className="space-y-2">

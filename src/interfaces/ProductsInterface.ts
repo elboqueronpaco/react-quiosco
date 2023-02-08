@@ -4,5 +4,4 @@ export interface ProductsInterface {
   precio: number
   imagen: string
   categoria_id: number
-  cantidad: number
 }
